@@ -8,10 +8,9 @@ import Main from "./Main";
 const ipfsClient = require("ipfs-http-client");
 const { Buffer } = require("buffer");
 const Moralis = require("moralis").default;
+require("dotenv").config();
 
 //Declare IPFS
-// const projectId = "2H1WbmbzezLGsDjIzVCVtGB3NFy";
-// const projectSecret = "8c7dda85130439044a3c73fa2f135c15";
 
 // const auth =
 //   "Basic  " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
@@ -108,8 +107,7 @@ class App extends Component {
     ];
 
     await Moralis.start({
-      apiKey:
-        "uRu2wTOHHOXjGYu16k6dgDcYiJ3JXkbeMILX2nrLDcIl8HlPebptpx5cKqaNzkHa",
+      apiKey: process.env.MORALIS_API_KEY,
     });
     const response = await Moralis.EvmApi.ipfs.uploadFolder({
       abi,
